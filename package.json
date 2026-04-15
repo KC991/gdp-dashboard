@@ -1,0 +1,19 @@
+{
+  "name": "gdp-dashboard-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/web",
+    "packages/shared",
+    "packages/head-engine"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w apps/web",
+    "dev:web": "npm run dev -w apps/web",
+    "dev:api": "cd apps/api && uvicorn app.main:app --reload --port 8000",
+    "build:web": "npm run build -w apps/web",
+    "test": "npm run test:web && npm run test:api",
+    "test:web": "npm run test -w packages/shared && npm run test -w packages/head-engine",
+    "test:api": "cd apps/api && pytest"
+  }
+}
